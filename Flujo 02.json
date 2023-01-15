@@ -1,0 +1,113 @@
+[
+    {
+        "id": "f78157f3e751b46c",
+        "type": "tab",
+        "label": "Flujo 02",
+        "disabled": true,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "2bf2015787879bd5",
+        "type": "inject",
+        "z": "f78157f3e751b46c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 40,
+        "wires": [
+            [
+                "e2b2f47b42ebebeb"
+            ]
+        ]
+    },
+    {
+        "id": "95bc3be653ba2f1d",
+        "type": "debug",
+        "z": "f78157f3e751b46c",
+        "name": "debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 530,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "e2b2f47b42ebebeb",
+        "type": "function",
+        "z": "f78157f3e751b46c",
+        "name": "Convertir Fecha",
+        "func": "//Crea un objeto \"Date\" a partir del payload enviado por el timestamp\nvar date = new Date(msg.payload);\n//Cambia el payload para que sea una fecha con formato\nmsg.payload = date.toString();\n//Regresa el mensaje para que se envíe al siguiente nodo\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 40,
+        "wires": [
+            [
+                "95bc3be653ba2f1d",
+                "4982fef5fb736e56"
+            ]
+        ]
+    },
+    {
+        "id": "4982fef5fb736e56",
+        "type": "ui_text",
+        "z": "f78157f3e751b46c",
+        "group": "947d6214231fce7a",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Fecha",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "x": 530,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "947d6214231fce7a",
+        "type": "ui_group",
+        "name": "Fecha",
+        "tab": "3b6eb60b3b340b96",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "3b6eb60b3b340b96",
+        "type": "ui_tab",
+        "name": "Flujo 02",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    }
+]
